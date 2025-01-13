@@ -84,7 +84,29 @@ static double LONG_PRESS_TIME = 0.5;
             }
         }
 
-    [super touchesCancelledWithEvent:event];
+   [super touchesCancelledWithEvent:event];
+}
+
++ (TouchButton*)buttonWithTitle:(NSString*)title target:(id)target action:(SEL)action {
+    TouchButton* button = [[TouchButton alloc] init];
+    [button setTitle:title];
+    [button setTarget:target];
+    [button setAction:action];
+    
+
+    button.wantsLayer = YES;
+    
+    button.layer.cornerRadius = 0.0;
+    button.layer.masksToBounds = YES;
+    
+    button.layer.borderWidth = 0.0;
+    button.layer.shadowOpacity = 0.0;
+    
+    [button setBordered:NO];
+
+    button.layer.backgroundColor = [NSColor colorWithRed:0.206 green:0.206 blue:0.206 alpha:1.0].CGColor;
+    
+    return button;
 }
 
 @end
